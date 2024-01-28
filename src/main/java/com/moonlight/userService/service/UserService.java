@@ -1,8 +1,7 @@
 package com.moonlight.userService.service;
 
-import com.moonlight.userService.dto.UserRequest;
-import com.moonlight.userService.dto.UserResponse;
-import com.moonlight.userService.entity.User;
+import com.moonlight.userService.mappers.UserRequest;
+import com.moonlight.userService.mappers.UserResponse;
 
 import java.util.List;
 

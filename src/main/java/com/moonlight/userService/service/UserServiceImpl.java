@@ -1,12 +1,15 @@
 package com.moonlight.userService.service;
 
 
+import com.moonlight.commonutility.config.HttpConfig;
 import com.moonlight.commonutility.exception.ResourceNotFoundException;
+import com.moonlight.commonutility.service.ReactiveWebClientService;
 import com.moonlight.userService.buildFactory.UserBuilderFactory;
-import com.moonlight.userService.dto.UserRequest;
-import com.moonlight.userService.dto.UserResponse;
+import com.moonlight.userService.mappers.UserRequest;
+import com.moonlight.userService.mappers.UserResponse;
 import com.moonlight.userService.entity.User;
 import com.moonlight.userService.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -21,6 +25,12 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserBuilderFactory userBuilderFactory;
+
+    @Autowired
+    private ReactiveWebClientService webClientService;
+
+    @Autowired
+    private HttpConfig httpConfig;
 
     @Override
     public UserResponse saveUser(UserRequest userRequest) {
@@ -33,8 +43,12 @@ public class UserServiceImpl implements UserService{
     public UserResponse getUser(Integer userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new com.moonlight.commonutility.exception.ResourceNotFoundException("User", "UserId", String.valueOf(userId)));
-        return userBuilderFactory.buildUserResponse(user);
+        UserResponse userResponse = userBuilderFactory.buildUserResponse(user);
+        return userResponse;
     }
+
+
+
 
     @Override
     public List<UserResponse> getAllUsers() {

@@ -1,7 +1,7 @@
 package com.moonlight.userService.buildFactory;
 
-import com.moonlight.userService.dto.UserRequest;
-import com.moonlight.userService.dto.UserResponse;
+import com.moonlight.userService.mappers.UserRequest;
+import com.moonlight.userService.mappers.UserResponse;
 import com.moonlight.userService.entity.User;
 import org.springframework.stereotype.Component;
 

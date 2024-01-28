@@ -1,8 +1,8 @@
 package com.moonlight.userService.controller;
 
 import com.moonlight.commonutility.mappers.AppResponse;
-import com.moonlight.userService.dto.UserRequest;
-import com.moonlight.userService.dto.UserResponse;
+import com.moonlight.userService.mappers.UserRequest;
+import com.moonlight.userService.mappers.UserResponse;
 import com.moonlight.userService.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
