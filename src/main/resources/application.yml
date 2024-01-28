@@ -8,6 +8,9 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  application:
+    name: USER-SERVICE
+
 
   jpa:
     show-sql: true
@@ -21,3 +24,20 @@ spring:
 #  swagger-ui:
 #    path: /swagger-ui-custom.html
 #    operations-sorter: method
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    statusPageUrlPath: ${server.servletPath}/info
+#    healthCheckUrlPath: ${server.servletPath}/health

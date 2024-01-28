@@ -46,5 +46,4 @@ public class UserController {
                 .body(new AppResponse(userService.deleteUser(userId)));
     }
 
-
 }
